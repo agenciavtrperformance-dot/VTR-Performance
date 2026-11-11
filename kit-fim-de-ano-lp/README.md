@@ -50,6 +50,17 @@ var WHATSAPP_NUMBER = "5519999999999";
 - **Meta Pixel:** `PageView` ao abrir, `ViewContent` ao rolar 50% da página e `InitiateCheckout` ao clicar em qualquer botão de compra (valor 37, BRL).
 - **Contador de dias:** mostra "Faltam X dias para a Black Friday" até 27/11 e depois "Faltam X dias para o Natal". É a data real, não reinicia. Depois de 25/12 ele some sozinho.
 
+### Google Tag Manager (GTM-MHCTJ7ZP)
+
+O GTM está instalado em todas as páginas. Além disso, a página envia estes eventos para o `dataLayer`, que você pode usar como acionadores ("Evento personalizado") no GTM, por exemplo para o GA4:
+
+| Evento no dataLayer | Quando acontece |
+|---|---|
+| `vtr_ViewContent` | Rolou 50% da página de vendas |
+| `vtr_InitiateCheckout` | Clicou em um botão de compra |
+
+**Atenção:** o Meta Pixel já está instalado direto na página. **Não** crie uma tag do Meta Pixel dentro do GTM, senão os eventos ficam duplicados no Gerenciador de Anúncios.
+
 ### Importante: evento de compra (Purchase)
 
 A página **não** dispara o `Purchase`. Ele precisa ser configurado **dentro da Cakto** (integração com o Meta Pixel / API de Conversões no produto). Sem isso, o Gerenciador de Anúncios não enxerga as vendas.
@@ -60,10 +71,9 @@ A página **não** dispara o `Purchase`. Ele precisa ser configurado **dentro da
 
 Procure por `[PREENCHER` e `[CONFIRMAR` (Ctrl+F) em cada arquivo:
 
-- **Razão social e CNPJ:** rodapé do `index.html` e do `obrigado/index.html`, e topo dos termos e da privacidade.
-- **E-mail de contato:** `termos/index.html` e `privacidade/index.html`.
+- **Razão social:** o CNPJ 56.418.923/0001-12 já está no rodapé e nos termos, com o nome "VTR Performance". Troque pelo nome empresarial exato do cartão CNPJ onde houver `[CONFIRMAR RAZÃO SOCIAL]`.
+- **E-mail de contato:** já preenchido (agenciavtrperformance@gmail.com).
 - **Foto do Vitor:** já está em `assets/img/vitor.webp` (fundo azul). A outra foto (escritório escuro) está em `assets/img/vitor-alternativa.webp`; para trocar, é só renomear os arquivos.
-- **Case R$ 5 mil → R$ 50 mil:** confirme o texto no `index.html` (seção "Quem preparou o kit").
 - **Escopo do diagnóstico:** confirme os 4 itens da oferta no `obrigado/index.html`.
 
 ---

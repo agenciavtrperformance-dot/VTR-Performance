@@ -32,6 +32,9 @@ var NATAL        = "2026-12-25T00:00:00-03:00";
   }
   var track = function (event, data) {
     if (pixelOn && window.fbq) window.fbq("track", event, data || {});
+    // Mesmo evento no dataLayer, para usar como acionador no Google Tag Manager
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ event: "vtr_" + event, value: PRODUCT_VALUE, currency: "BRL" });
   };
   var contentData = { content_name: "Kit Fim de Ano do Lojista", content_type: "product", value: PRODUCT_VALUE, currency: "BRL" };
 
