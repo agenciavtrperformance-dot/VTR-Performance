@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 564" role="img" aria-labelledby="mk-t" font-family="Poppins, system-ui, sans-serif">
+  <title id="mk-t">Mockup do Kit Fim de Ano do Lojista: calculadora de margem em planilha, calendário de vendas em PDF e celular com roteiros e mensagens prontas</title>
+  <defs>
+    <linearGradient id="mk-pdf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#2F6BFF"/>
+      <stop offset="1" stop-color="#0E2A78"/>
+    </linearGradient>
+    <linearGradient id="mk-sheet" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#121829"/>
+      <stop offset="1" stop-color="#0B0F1C"/>
+    </linearGradient>
+    <linearGradient id="mk-phone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0E1220"/>
+      <stop offset="1" stop-color="#070910"/>
+    </linearGradient>
+    <radialGradient id="mk-glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#2F6BFF" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#2F6BFF" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <ellipse cx="300" cy="280" rx="260" ry="220" fill="url(#mk-glow)"/>
+
+  <!-- PDF: Calendário -->
+  <g transform="translate(24 120) rotate(-7 115 155)">
+    <rect width="230" height="310" rx="16" fill="url(#mk-pdf)"/>
+    <rect width="230" height="310" rx="16" fill="none" stroke="#FFFFFF" stroke-opacity="0.18"/>
+    <rect x="20" y="22" width="58" height="20" rx="10" fill="#FFFFFF" fill-opacity="0.16"/>
+    <text x="49" y="36" text-anchor="middle" font-size="10" font-weight="700" fill="#FFFFFF">PDF</text>
+    <text x="20" y="80" font-size="13" font-weight="700" fill="#FFFFFF" fill-opacity="0.8">Calendário de vendas</text>
+    <text x="20" y="112" font-size="27" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">Fim de Ano</text>
+    <text x="20" y="142" font-size="27" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">2026</text>
+    <g font-size="11" font-weight="700" fill="#FFFFFF">
+      <rect x="20" y="168" width="190" height="26" rx="8" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="32" y="185">27/11</text><text x="80" y="185" font-weight="400" fill-opacity="0.85">Black Friday</text>
+      <rect x="20" y="200" width="190" height="26" rx="8" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="32" y="217">30/11</text><text x="80" y="217" font-weight="400" fill-opacity="0.85">Cyber Monday</text>
+      <rect x="20" y="232" width="190" height="26" rx="8" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="32" y="249">Dez.</text><text x="80" y="249" font-weight="400" fill-opacity="0.85">Semana do Natal</text>
+      <rect x="20" y="264" width="190" height="26" rx="8" fill="#FFFFFF" fill-opacity="0.12"/>
+      <text x="32" y="281">Jan.</text><text x="80" y="281" font-weight="400" fill-opacity="0.85">Liquidação</text>
+    </g>
+  </g>
+
+  <!-- Planilha: Calculadora -->
+  <g transform="translate(196 34)">
+    <rect width="336" height="236" rx="16" fill="url(#mk-sheet)"/>
+    <rect width="336" height="236" rx="16" fill="none" stroke="#FFFFFF" stroke-opacity="0.12"/>
+    <path d="M0 16a16 16 0 0 1 16-16h304a16 16 0 0 1 16 16v20H0z" fill="#FFFFFF" fill-opacity="0.05"/>
+    <circle cx="18" cy="18" r="4.5" fill="#FF6B6B"/><circle cx="32" cy="18" r="4.5" fill="#F5C451"/><circle cx="46" cy="18" r="4.5" fill="#3DDC97"/>
+    <text x="66" y="22" font-size="10.5" font-weight="700" fill="#9AA3B2">Calculadora de desconto e margem</text>
+    <g font-size="10" fill="#9AA3B2" font-weight="700">
+      <text x="18" y="62">Produto</text><text x="130" y="62">Preço</text><text x="190" y="62">Margem</text><text x="258" y="62">Desc. máx.</text>
+    </g>
+    <line x1="14" y1="72" x2="322" y2="72" stroke="#FFFFFF" stroke-opacity="0.1"/>
+    <g font-size="11" fill="#FFFFFF">
+      <text x="18" y="94">Vestido midi</text><text x="130" y="94">R$ 189</text><text x="190" y="94">45%</text>
+      <rect x="252" y="80" width="62" height="21" rx="6" fill="#2F6BFF" fill-opacity="0.2"/><text x="283" y="95" text-anchor="middle" font-weight="700" fill="#8FB0FF">20%</text>
+      <line x1="14" y1="108" x2="322" y2="108" stroke="#FFFFFF" stroke-opacity="0.06"/>
+      <text x="18" y="128">Conjunto fitness</text><text x="130" y="128">R$ 159</text><text x="190" y="128">40%</text>
+      <rect x="252" y="114" width="62" height="21" rx="6" fill="#2F6BFF" fill-opacity="0.2"/><text x="283" y="129" text-anchor="middle" font-weight="700" fill="#8FB0FF">15%</text>
+      <line x1="14" y1="142" x2="322" y2="142" stroke="#FFFFFF" stroke-opacity="0.06"/>
+      <text x="18" y="162">Brinco folheado</text><text x="130" y="162">R$ 79</text><text x="190" y="162">60%</text>
+      <rect x="252" y="148" width="62" height="21" rx="6" fill="#2F6BFF" fill-opacity="0.2"/><text x="283" y="163" text-anchor="middle" font-weight="700" fill="#8FB0FF">30%</text>
+    </g>
+    <rect x="14" y="184" width="308" height="36" rx="10" fill="#2F6BFF"/>
+    <text x="28" y="207" font-size="11.5" font-weight="700" fill="#FFFFFF">Meta para lucrar o mesmo</text>
+    <text x="308" y="207" text-anchor="end" font-size="13" font-weight="800" fill="#FFFFFF">+100% vendas</text>
+  </g>
+
+  <!-- Celular -->
+  <g transform="translate(360 264)">
+    <rect width="176" height="296" rx="30" fill="#1A2033"/>
+    <rect x="6" y="6" width="164" height="284" rx="25" fill="url(#mk-phone)"/>
+    <rect x="62" y="14" width="52" height="12" rx="6" fill="#05060B"/>
+    <text x="20" y="54" font-size="10" font-weight="700" fill="#9AA3B2">Lista VIP</text>
+    <rect x="16" y="64" width="128" height="50" rx="12" fill="#FFFFFF" fill-opacity="0.08"/>
+    <text x="26" y="83" font-size="9.5" fill="#FFFFFF">Amanhã às 8h abre a</text>
+    <text x="26" y="98" font-size="9.5" fill="#FFFFFF">Black da loja. Só para</text>
+    <text x="26" y="110" font-size="9.5" fill="#FFFFFF" fill-opacity="0.9">quem está na lista.</text>
+    <rect x="46" y="124" width="112" height="34" rx="12" fill="#2F6BFF"/>
+    <text x="58" y="145" font-size="9.5" font-weight="700" fill="#FFFFFF">Quero entrar!</text>
+    <rect x="16" y="170" width="142" height="104" rx="14" fill="#FFFFFF" fill-opacity="0.06"/>
+    <text x="28" y="192" font-size="9" font-weight="700" fill="#8FB0FF">ROTEIRO 07 · REELS</text>
+    <text x="28" y="212" font-size="10.5" font-weight="700" fill="#FFFFFF">3 erros que fazem</text>
+    <text x="28" y="227" font-size="10.5" font-weight="700" fill="#FFFFFF">a sua Black dar</text>
+    <text x="28" y="242" font-size="10.5" font-weight="700" fill="#FFFFFF">prejuízo</text>
+    <circle cx="136" cy="254" r="11" fill="#2F6BFF"/>
+    <path d="M132.5 248.5v11l9-5.5z" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Selo -->
+  <g transform="translate(34 30)">
+    <rect width="132" height="40" rx="20" fill="#05060B" stroke="#2F6BFF" stroke-opacity="0.6"/>
+    <circle cx="22" cy="20" r="9" fill="#2F6BFF"/>
+    <path d="M17.5 20.2l3 3 6-6.2" fill="none" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="38" y="25" font-size="12" font-weight="700" fill="#FFFFFF">5 materiais</text>
+  </g>
+</svg>
