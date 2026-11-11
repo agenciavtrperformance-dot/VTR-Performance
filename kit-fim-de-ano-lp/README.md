@@ -21,7 +21,9 @@ Site estático (HTML + CSS + JS puro), sem backend. Lighthouse mobile local: 100
 
 ## 1. Trocar o link do checkout, o pixel e o WhatsApp
 
-Abra `assets/main.js`. As primeiras linhas são estas:
+> **Já configurado (11/11/2026):** checkout `https://pay.cakto.com.br/966yqov_1312461`, Meta Pixel `1123355403977678` e WhatsApp `5511992137608`. Falta só o `UPSELL_URL`.
+
+Abra `assets/main.js`. As primeiras linhas eram estas:
 
 ```js
 var CHECKOUT_URL    = "[PREENCHER LINK DO CHECKOUT CAKTO]";
@@ -60,7 +62,7 @@ Procure por `[PREENCHER` e `[CONFIRMAR` (Ctrl+F) em cada arquivo:
 
 - **Razão social e CNPJ:** rodapé do `index.html` e do `obrigado/index.html`, e topo dos termos e da privacidade.
 - **E-mail de contato:** `termos/index.html` e `privacidade/index.html`.
-- **Foto do Vitor:** salve a foto como `assets/img/vitor.webp` (vertical 4:5, uns 800x1000 px). Enquanto não existir, aparecem as iniciais "VA".
+- **Foto do Vitor:** já está em `assets/img/vitor.webp` (fundo azul). A outra foto (escritório escuro) está em `assets/img/vitor-alternativa.webp`; para trocar, é só renomear os arquivos.
 - **Case R$ 5 mil → R$ 50 mil:** confirme o texto no `index.html` (seção "Quem preparou o kit").
 - **Escopo do diagnóstico:** confirme os 4 itens da oferta no `obrigado/index.html`.
 

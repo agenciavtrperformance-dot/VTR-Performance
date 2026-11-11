@@ -1,10 +1,10 @@
 /* ==========================================================================
    CONFIGURAÇÃO — troque só estes valores (veja o README.md)
    ========================================================================== */
-var CHECKOUT_URL    = "[PREENCHER LINK DO CHECKOUT CAKTO]"; // ex.: https://pay.cakto.com.br/abc123
+var CHECKOUT_URL    = "https://pay.cakto.com.br/966yqov_1312461"; // ex.: https://pay.cakto.com.br/abc123
 var UPSELL_URL      = "[PREENCHER LINK DO UPSELL]";          // checkout do diagnóstico de R$ 97
-var META_PIXEL_ID   = "[PREENCHER PIXEL ID]";                // só números, ex.: 123456789012345
-var WHATSAPP_NUMBER = "[PREENCHER WHATSAPP]";                // DDI + DDD + número, só números, ex.: 5519999999999
+var META_PIXEL_ID   = "1123355403977678";                // só números, ex.: 123456789012345
+var WHATSAPP_NUMBER = "5511992137608";                // DDI + DDD + número, só números, ex.: 5519999999999
 var WHATSAPP_TEXT   = "Oi, Vitor! Tenho uma dúvida sobre o Kit Fim de Ano do Lojista.";
 var PRODUCT_VALUE   = 37;
 
