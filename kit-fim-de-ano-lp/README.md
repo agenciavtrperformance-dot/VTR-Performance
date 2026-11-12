@@ -1,6 +1,8 @@
 # Kit Fim de Ano do Lojista — landing page
 
 Página de vendas do **Kit Fim de Ano do Lojista: da Black Friday ao Natal** (VTR Performance).
+**No ar:** https://kit.vtrperformance.com.br (Cloudflare Pages, projeto `kit-vtr-site`; CNAME `kit` → `kit-vtr-site.pages.dev` no Registro.br).
+
 Site estático (HTML + CSS + JS puro), sem backend. Lighthouse mobile local: 100 em desempenho, acessibilidade, boas práticas e SEO.
 
 ## O que tem nesta pasta
