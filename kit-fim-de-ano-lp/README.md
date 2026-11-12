@@ -21,7 +21,7 @@ Site estático (HTML + CSS + JS puro), sem backend. Lighthouse mobile local: 100
 
 ## 1. Trocar o link do checkout, o pixel e o WhatsApp
 
-> **Já configurado (11/11/2026):** checkout `https://pay.cakto.com.br/966yqov_1312461`, Meta Pixel `1123355403977678` e WhatsApp `5511992137608`. Falta só o `UPSELL_URL`.
+> **Já configurado:** checkout do kit `https://pay.cakto.com.br/966yqov_1312461`, checkout do diagnóstico `https://pay.cakto.com.br/j2mdbbi_1313183` (`UPSELL_URL`), Meta Pixel `1123355403977678` e WhatsApp `5511992137608`.
 
 Abra `assets/main.js`. As primeiras linhas eram estas:
 
@@ -48,7 +48,7 @@ var WHATSAPP_NUMBER = "5519999999999";
 
 - **UTM:** se alguém chega em `kit.vtrperformance.com.br/?utm_source=instagram&utm_medium=reels`, o botão leva para `pay.cakto.com.br/abc123?utm_source=instagram&utm_medium=reels`. Assim a Cakto mostra de onde veio cada venda.
 - **Meta Pixel:** `PageView` ao abrir, `ViewContent` ao rolar 50% da página e `InitiateCheckout` ao clicar em qualquer botão de compra (valor 37, BRL).
-- **Contador de dias:** mostra "Faltam X dias para a Black Friday" até 27/11 e depois "Faltam X dias para o Natal". É a data real, não reinicia. Depois de 25/12 ele some sozinho.
+- **Contador de dias** (data do navegador no fuso de São Paulo): até 26/11 "Faltam X dias para a Black Friday"; em 27/11 "Hoje é Black Friday"; de 28/11 a 23/12 "Faltam X dias para o Natal"; em 24/12 "Último dia para o presente de Natal"; a partir de 25/12 ele some.
 
 ### Google Tag Manager (GTM-MHCTJ7ZP)
 
@@ -74,7 +74,6 @@ Procure por `[PREENCHER` e `[CONFIRMAR` (Ctrl+F) em cada arquivo:
 - **Razão social:** o CNPJ 56.418.923/0001-12 já está no rodapé e nos termos, com o nome "VTR Performance". Troque pelo nome empresarial exato do cartão CNPJ onde houver `[CONFIRMAR RAZÃO SOCIAL]`.
 - **E-mail de contato:** já preenchido (agenciavtrperformance@gmail.com).
 - **Foto do Vitor:** já está em `assets/img/vitor.webp` (fundo azul). A outra foto (escritório escuro) está em `assets/img/vitor-alternativa.webp`; para trocar, é só renomear os arquivos.
-- **Escopo do diagnóstico:** confirme os 4 itens da oferta no `obrigado/index.html`.
 
 ---
 

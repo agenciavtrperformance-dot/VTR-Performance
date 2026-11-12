@@ -2,15 +2,15 @@
    CONFIGURAÇÃO — troque só estes valores (veja o README.md)
    ========================================================================== */
 var CHECKOUT_URL    = "https://pay.cakto.com.br/966yqov_1312461"; // ex.: https://pay.cakto.com.br/abc123
-var UPSELL_URL      = "[PREENCHER LINK DO UPSELL]";          // opcional: hoje a consultoria é pelo WhatsApp
+var UPSELL_URL      = "https://pay.cakto.com.br/j2mdbbi_1313183"; // Diagnóstico Estratégico da Loja (R$ 97)
 var META_PIXEL_ID   = "1123355403977678";                // só números, ex.: 123456789012345
 var WHATSAPP_NUMBER = "5511992137608";                // DDI + DDD + número, só números, ex.: 5519999999999
 var WHATSAPP_TEXT   = "Oi, Vitor! Tenho uma dúvida sobre o Kit Fim de Ano do Lojista.";
 var PRODUCT_VALUE   = 37;
 
-/* Datas reais usadas no contador de dias (horário de Brasília) */
-var BLACK_FRIDAY = "2026-11-27T00:00:00-03:00";
-var NATAL        = "2026-12-25T00:00:00-03:00";
+/* Datas reais usadas no contador de dias (fuso America/Sao_Paulo) */
+var BLACK_FRIDAY = "2026-11-27";
+var NATAL        = "2026-12-25";
 
 /* ========================================================================== */
 (function () {
@@ -95,23 +95,24 @@ var NATAL        = "2026-12-25T00:00:00-03:00";
     window.addEventListener("scroll", onScroll, { passive: true });
   }
 
-  /* ---------- Contador de dias (data real, não reinicia) ---------- */
+  /* ---------- Contador de dias (data real, não reinicia) ----------
+     Até 26/11: "Faltam X dias para a Black Friday" · 27/11: "Hoje é Black Friday"
+     28/11 a 23/12: "Faltam X dias para o Natal" · 24/12: "Último dia para o presente de Natal"
+     A partir de 25/12: escondido. Usa a data do navegador no fuso de São Paulo. */
   var pills = document.querySelectorAll(".js-countdown");
   if (pills.length) {
-    var now = Date.now();
-    var day = 864e5;
-    var bf = new Date(BLACK_FRIDAY).getTime();
-    var xmas = new Date(NATAL).getTime();
+    var todaySP;
+    try {
+      todaySP = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Sao_Paulo", year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
+    } catch (e) { todaySP = new Date().toISOString().slice(0, 10); }
+    var dayNum = function (ymd) { var p = ymd.split("-"); return Date.UTC(+p[0], +p[1] - 1, +p[2]) / 864e5; };
+    var t = dayNum(todaySP), bf = dayNum(BLACK_FRIDAY), xmas = dayNum(NATAL);
+    var plural = function (n, alvo) { return n === 1 ? "Falta <b>1 dia</b> para " + alvo : "Faltam <b>" + n + " dias</b> para " + alvo; };
     var text = "";
-    if (now < bf) {
-      var d = Math.ceil((bf - now) / day);
-      text = d === 1 ? "Falta <b>1 dia</b> para a Black Friday" : "Faltam <b>" + d + " dias</b> para a Black Friday";
-    } else if (now < bf + day) {
-      text = "<b>Hoje</b> é Black Friday";
-    } else if (now < xmas) {
-      var n = Math.ceil((xmas - now) / day);
-      text = n === 1 ? "Falta <b>1 dia</b> para o Natal" : "Faltam <b>" + n + " dias</b> para o Natal";
-    }
+    if (t < bf) text = plural(bf - t, "a Black Friday");
+    else if (t === bf) text = "<b>Hoje</b> é Black Friday";
+    else if (t === xmas - 1) text = "<b>Último dia</b> para o presente de Natal";
+    else if (t < xmas) text = plural(xmas - t, "o Natal");
     if (text) pills.forEach(function (p) { p.innerHTML = text; p.hidden = false; });
   }
 
