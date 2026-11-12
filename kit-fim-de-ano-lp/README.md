@@ -77,36 +77,42 @@ Procure por `[PREENCHER` e `[CONFIRMAR` (Ctrl+F) em cada arquivo:
 
 ---
 
-## 3. Publicar na Vercel (passo a passo)
+## 3. Publicar no Cloudflare Pages (grátis, permite uso comercial)
 
-1. Entre em **vercel.com** e faça login com a sua conta do GitHub.
-2. Clique em **Add New… → Project**.
-3. Escolha o repositório **VTR-Performance** e clique em **Import**.
-4. Em **Root Directory**, clique em **Edit** e escolha a pasta **`kit-fim-de-ano-lp`**.
-5. Em **Framework Preset**, deixe **Other**. Não precisa de comando de build.
-6. Clique em **Deploy**. Em 1 minuto a página estará num endereço `.vercel.app`. Teste por ele.
+> Por que não a Vercel: o plano grátis da Vercel (Hobby) só permite uso pessoal e não comercial. Uma página de vendas precisa do plano Pro (US$ 20/mês). O Cloudflare Pages é grátis e não tem essa restrição.
 
-Toda vez que um arquivo for alterado no GitHub, a Vercel publica a nova versão sozinha.
+**Gerar o arquivo para enviar:** dentro desta pasta, compacte em um `.zip` os itens `index.html`, `obrigado/`, `termos/`, `privacidade/`, `assets/` e `_headers`. O `index.html` precisa ficar na raiz do zip.
+
+1. Crie uma conta grátis em **dash.cloudflare.com/sign-up** e confirme o e-mail.
+2. No menu da esquerda, abra **Workers & Pages** (às vezes aparece dentro de **Compute**).
+3. Clique em **Create** (Criar) e escolha a aba **Pages**.
+4. Escolha **Upload assets** / **Use direct upload** (enviar arquivos). **Não** escolha "Connect to Git".
+5. Nome do projeto: `kit-vtr-performance`. Clique em **Create project**.
+6. Arraste o arquivo `.zip` para a área de upload e clique em **Deploy site**.
+7. Pronto: a página fica no ar em `kit-vtr-performance.pages.dev` (ou um nome parecido, se esse estiver ocupado). Abra e teste.
+
+**Para atualizar depois:** no projeto, clique em **Create new deployment** e envie o zip novo.
+
+> Os nomes dos botões podem mudar um pouco, porque a Cloudflare atualiza o painel com frequência.
 
 ## 4. Apontar o subdomínio kit.vtrperformance.com.br
 
-**Na Vercel:**
+**No Cloudflare:**
 
-1. Abra o projeto → **Settings → Domains**.
-2. Digite `kit.vtrperformance.com.br` e clique em **Add**.
-3. A Vercel vai mostrar um registro do tipo **CNAME**. Anote o valor (geralmente `cname.vercel-dns.com`; use exatamente o que a Vercel mostrar).
+1. No projeto, abra a aba **Custom domains** (Domínios personalizados).
+2. Clique em **Set up a custom domain**, digite `kit.vtrperformance.com.br` e continue.
+3. A Cloudflare vai mostrar um registro **CNAME**. Anote o destino (algo como `kit-vtr-performance.pages.dev`).
 
-**Onde o domínio está registrado** (Registro.br, Hostinger, GoDaddy, Cloudflare etc.):
+**Onde o domínio está registrado** (para `.com.br`, normalmente o **Registro.br**):
 
-1. Abra a zona de **DNS** de `vtrperformance.com.br`.
-2. Crie um registro novo:
+1. Entre em **registro.br**, abra o domínio `vtrperformance.com.br` e vá em **DNS → Editar zona**. Se o domínio usa DNS de outro lugar (Hostinger, GoDaddy etc.), faça no painel de DNS de lá.
+2. Clique em **Nova entrada** e preencha:
    - **Tipo:** `CNAME`
-   - **Nome/Host:** `kit`
-   - **Valor/Destino:** o valor que a Vercel mostrou
-   - **TTL:** o padrão
-3. Salve. Em alguns minutos (às vezes até algumas horas) a Vercel mostra **Valid Configuration** e ativa o HTTPS sozinha.
+   - **Nome:** `kit`
+   - **Dados/Destino:** o valor que a Cloudflare mostrou (ex.: `kit-vtr-performance.pages.dev`)
+3. Salve. Em alguns minutos (às vezes algumas horas) o Cloudflare mostra o domínio como **Active** e ativa o HTTPS sozinho.
 
-> No Cloudflare, deixe a nuvem **cinza** (somente DNS) nesse registro.
+O arquivo `vercel.json` só seria usado na Vercel e pode ser ignorado.
 
 ---
 
