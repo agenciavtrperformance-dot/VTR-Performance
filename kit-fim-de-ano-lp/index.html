@@ -225,7 +225,7 @@
         <div class="section-head narrow reveal">
           <span class="tag">Exemplo hipotético</span>
           <h2 id="t-exemplo" style="margin-top:16px">20% de desconto parece pouco. Até você fazer a conta.</h2>
-          <p>Uma peça de R$ 100, com 40% de margem. Veja o que acontece com o lucro quando entra o desconto.</p>
+          <p>Uma peça de R$ 100, com 40% de margem (sem taxas, para simplificar). Veja o que acontece com o lucro quando entra o desconto.</p>
         </div>
         <div class="compare">
           <div class="scenario reveal">
@@ -253,25 +253,29 @@
 
         <div class="sim reveal" id="sim">
           <h3>Faça o teste com a sua loja</h3>
-          <p>Arraste e veja o que acontece com o seu lucro. A calculadora do kit faz essa conta para cada produto, com o seu preço e o seu custo.</p>
+          <p>Arraste e veja o que acontece com o seu lucro, com a sua margem, o seu desconto e as suas taxas. A calculadora do kit faz essa conta para cada produto.</p>
           <div class="sim-grid">
             <div>
               <div class="field">
-                <label for="sim-margin">Sua margem de lucro <output id="sim-margin-out" for="sim-margin">40%</output></label>
-                <input type="range" id="sim-margin" min="10" max="80" step="5" value="40">
+                <label for="sim-margin">Sua margem de lucro <output id="sim-margin-out" for="sim-margin">45%</output></label>
+                <input type="range" id="sim-margin" min="10" max="80" step="1" value="45">
               </div>
               <div class="field">
                 <label for="sim-discount">Desconto da Black Friday <output id="sim-discount-out" for="sim-discount">20%</output></label>
                 <input type="range" id="sim-discount" min="0" max="60" step="5" value="20">
               </div>
+              <div class="field">
+                <label for="sim-fee">Taxas e impostos <output id="sim-fee-out" for="sim-fee">10%</output></label>
+                <input type="range" id="sim-fee" min="0" max="30" step="1" value="10">
+              </div>
             </div>
             <div class="sim-out" aria-live="polite">
               <span class="label" id="sim-label">Você precisa vender a mais</span>
-              <strong class="value bad" id="sim-value">+100%</strong>
-              <p class="detail" id="sim-detail">Numa peça de R$ 100, o lucro cai de R$ 40,00 para R$ 20,00. Para lucrar o mesmo, você precisa vender <strong>2x</strong> o volume normal.</p>
+              <strong class="value bad" id="sim-value">+67%</strong>
+              <p class="detail" id="sim-detail">Numa peça de R$ 100, depois das taxas, o lucro cai de R$ 45,00 para R$ 27,00. Para lucrar o mesmo, você precisa vender <strong>1,67x</strong> o volume normal.</p>
             </div>
           </div>
-          <p class="sim-foot">Simulação simplificada, com a margem calculada sobre o preço de venda. Não considera frete, taxas de pagamento e impostos.</p>
+          <p class="sim-foot">Margem de lucro é o que sobra de cada venda, já descontados o custo do produto e as taxas. As taxas (maquininha, plataforma e impostos) são proporcionais ao preço, por isso também diminuem com o desconto. Não considera frete.</p>
         </div>
 
         <div class="cta-block center reveal">

@@ -116,13 +116,19 @@ var NATAL        = "2026-12-25";
     if (text) pills.forEach(function (p) { p.innerHTML = text; p.hidden = false; });
   }
 
-  /* ---------- Simulador de margem ---------- */
+  /* ---------- Simulador de margem ----------
+     Margem (m) = lucro líquido por venda, em % do preço, já descontados custo e taxas.
+     Taxas (f) = custos proporcionais ao preço (maquininha, plataforma, impostos).
+     Numa peça de R$ 100: custo = 100 - f - m. Com desconto d, o lucro vira
+     (100 - d) x (1 - f/100) - custo = m - d x (1 - f/100). */
   var sim = document.getElementById("sim");
   if (sim) {
     var mIn = document.getElementById("sim-margin");
     var dIn = document.getElementById("sim-discount");
+    var fIn = document.getElementById("sim-fee");
     var mOut = document.getElementById("sim-margin-out");
     var dOut = document.getElementById("sim-discount-out");
+    var fOut = document.getElementById("sim-fee-out");
     var value = document.getElementById("sim-value");
     var label = document.getElementById("sim-label");
     var detail = document.getElementById("sim-detail");
@@ -131,28 +137,35 @@ var NATAL        = "2026-12-25";
       var p = (el.value - el.min) / (el.max - el.min) * 100;
       el.style.setProperty("--fill", p + "%");
     };
-    var update = function () {
-      var m = +mIn.value, d = +dIn.value;
-      mOut.textContent = m + "%"; dOut.textContent = d + "%";
-      fill(mIn); fill(dIn);
-      var profitBefore = m;       // lucro por peça de R$ 100
-      var profitAfter = m - d;    // o desconto sai inteiro do lucro
+    var update = function (e) {
+      var m = +mIn.value, d = +dIn.value, f = +fIn.value;
+      // margem + taxas não podem passar de 95% do preço (sobra pelo menos 5% de custo)
+      if (m + f > 95) {
+        if (e && e.target === fIn) { m = 95 - f; mIn.value = m; } else { f = 95 - m; fIn.value = f; }
+      }
+      mOut.textContent = m + "%"; dOut.textContent = d + "%"; fOut.textContent = f + "%";
+      fill(mIn); fill(dIn); fill(fIn);
+      var cost = 100 - f - m;
+      var profitBefore = m;
+      var profitAfter = m - d * (1 - f / 100);
       if (profitAfter <= 0) {
+        var received = 100 - d, fees = received * f / 100;
         value.textContent = "Prejuízo";
         value.classList.add("bad");
         label.textContent = "Com esse desconto, cada venda";
-        detail.innerHTML = "Numa peça de R$ 100, você recebe R$ " + fmt(100 - d) + " e paga R$ " + fmt(100 - m) + " de custo. <strong>Quanto mais vender, mais perde.</strong>";
+        detail.innerHTML = "Numa peça de R$ 100, você recebe R$ " + fmt(received) + ", paga R$ " + fmt(fees) + " de taxas e R$ " + fmt(cost) + " de custo. <strong>Quanto mais vender, mais perde.</strong>";
       } else {
         var mult = profitBefore / profitAfter;
         var extra = Math.round((mult - 1) * 100);
         value.classList.toggle("bad", mult >= 1.5);
         value.textContent = "+" + extra + "%";
         label.textContent = "Você precisa vender a mais";
-        detail.innerHTML = "Numa peça de R$ 100, o lucro cai de R$ " + fmt(profitBefore) + " para R$ " + fmt(profitAfter) + ". Para lucrar o mesmo, você precisa vender <strong>" + mult.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "x</strong> o volume normal.";
+        detail.innerHTML = "Numa peça de R$ 100, depois das taxas, o lucro cai de R$ " + fmt(profitBefore) + " para R$ " + fmt(profitAfter) + ". Para lucrar o mesmo, você precisa vender <strong>" + mult.toLocaleString("pt-BR", { maximumFractionDigits: 2 }) + "x</strong> o volume normal.";
       }
     };
     mIn.addEventListener("input", update);
     dIn.addEventListener("input", update);
+    fIn.addEventListener("input", update);
     update();
   }
 
