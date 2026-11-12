@@ -2,7 +2,7 @@
    CONFIGURAÇÃO — troque só estes valores (veja o README.md)
    ========================================================================== */
 var CHECKOUT_URL    = "https://pay.cakto.com.br/966yqov_1312461"; // ex.: https://pay.cakto.com.br/abc123
-var UPSELL_URL      = "[PREENCHER LINK DO UPSELL]";          // checkout do diagnóstico de R$ 97
+var UPSELL_URL      = "[PREENCHER LINK DO UPSELL]";          // opcional: hoje a consultoria é pelo WhatsApp
 var META_PIXEL_ID   = "1123355403977678";                // só números, ex.: 123456789012345
 var WHATSAPP_NUMBER = "5511992137608";                // DDI + DDD + número, só números, ex.: 5519999999999
 var WHATSAPP_TEXT   = "Oi, Vitor! Tenho uma dúvida sobre o Kit Fim de Ano do Lojista.";
@@ -72,8 +72,11 @@ var NATAL        = "2026-12-25T00:00:00-03:00";
 
   /* ---------- WhatsApp ---------- */
   if (isSet(WHATSAPP_NUMBER)) {
-    var wa = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(WHATSAPP_TEXT);
-    document.querySelectorAll(".js-whatsapp").forEach(function (a) { a.href = wa; a.target = "_blank"; a.rel = "noopener"; });
+    document.querySelectorAll(".js-whatsapp").forEach(function (a) {
+      var text = a.getAttribute("data-wa-text") || WHATSAPP_TEXT;
+      a.href = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+      a.target = "_blank"; a.rel = "noopener";
+    });
   }
 
   /* ---------- ViewContent ao rolar 50% ---------- */
