@@ -4,6 +4,9 @@
 /assets/img/*
   Cache-Control: public, max-age=604800
 
+/assets/video/*
+  Cache-Control: public, max-age=604800
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

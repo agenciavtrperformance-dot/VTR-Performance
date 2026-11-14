@@ -169,6 +169,23 @@ var NATAL        = "2026-12-25";
     update();
   }
 
+  /* ---------- Vídeo do kit: só baixa quando chega perto da tela ---------- */
+  document.querySelectorAll(".js-lazy-video").forEach(function (video) {
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var start = function () {
+      video.querySelectorAll("source[data-src]").forEach(function (s) { s.src = s.getAttribute("data-src"); s.removeAttribute("data-src"); });
+      video.load();
+      if (reduce) { video.removeAttribute("autoplay"); return; } // quem pediu menos movimento vê só a capa
+      var p = video.play(); if (p && p.catch) p.catch(function () {});
+    };
+    if ("IntersectionObserver" in window) {
+      var vio = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { vio.disconnect(); start(); }
+      }, { rootMargin: "400px 0px" });
+      vio.observe(video);
+    } else { start(); }
+  });
+
   /* ---------- Foto do Vitor (mostra as iniciais se a foto não existir) ---------- */
   var photo = document.querySelector(".photo img");
   if (photo) {
