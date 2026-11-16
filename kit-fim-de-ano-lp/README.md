@@ -3,7 +3,9 @@
 Página de vendas do **Kit Fim de Ano do Lojista: da Black Friday ao Natal** (VTR Performance).
 **No ar:** https://kit.vtrperformance.com.br (Cloudflare Pages, projeto `kit-vtr-site`; CNAME `kit` → `kit-vtr-site.pages.dev` no Registro.br).
 
-Site estático (HTML + CSS + JS puro), sem backend. Lighthouse mobile local: 100 em desempenho, acessibilidade, boas práticas e SEO.
+Site estático (HTML + CSS + JS puro), sem backend.
+
+> **Importante:** edite sempre os arquivos desta pasta. A pasta `dist/` e o `kit-vtr-site.zip` são gerados pelo `build.py` e não devem ser editados à mão.
 
 ## O que tem nesta pasta
 
@@ -17,7 +19,8 @@ Site estático (HTML + CSS + JS puro), sem backend. Lighthouse mobile local: 100
 | `assets/styles.css` | Visual da página |
 | `assets/img/og-image.jpg` | Imagem que aparece quando o link é compartilhado (1200x630) |
 | `assets/img/kit-mockup.svg` | Mockup do kit (o mesmo que está dentro do `index.html`) |
-| `vercel.json` | Configuração da Vercel (links sem `.html` e cache) |
+| `assets/video/` | Vídeo dos materiais (2,1 MB) e a capa dele |
+| `build.py` | Gera a versão otimizada (`dist/`) e o `kit-vtr-site.zip` para publicar |
 
 ---
 
@@ -83,7 +86,12 @@ Procure por `[PREENCHER` e `[CONFIRMAR` (Ctrl+F) em cada arquivo:
 
 > Por que não a Vercel: o plano grátis da Vercel (Hobby) só permite uso pessoal e não comercial. Uma página de vendas precisa do plano Pro (US$ 20/mês). O Cloudflare Pages é grátis e não tem essa restrição.
 
-**Gerar o arquivo para enviar:** dentro desta pasta, compacte em um `.zip` os itens `index.html`, `obrigado/`, `termos/`, `privacidade/`, `assets/` e `_headers`. O `index.html` precisa ficar na raiz do zip.
+**Gerar o arquivo para enviar:** dentro desta pasta, rode `python3 build.py`. Ele cria o `kit-vtr-site.zip` com a versão otimizada:
+- o CSS vai embutido em cada página e não bloqueia a primeira exibição
+- o JavaScript sai minificado
+- cada arquivo de `/assets` ganha um código de versão (`?v=...`), com cache de 1 ano (`immutable`) definido no `_headers` gerado
+
+Como o código de versão muda sempre que um arquivo muda, o cache longo nunca prende uma versão antiga. **Por isso, publique sempre o zip gerado pelo build, nunca a pasta original.**
 
 1. Crie uma conta grátis em **dash.cloudflare.com/sign-up** e confirme o e-mail.
 2. No menu da esquerda, abra **Workers & Pages** (às vezes aparece dentro de **Compute**).

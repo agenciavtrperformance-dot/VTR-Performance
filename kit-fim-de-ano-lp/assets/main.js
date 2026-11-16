@@ -173,6 +173,7 @@ var NATAL        = "2026-12-25";
   document.querySelectorAll(".js-lazy-video").forEach(function (video) {
     var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     var start = function () {
+      if (video.getAttribute("data-poster")) { video.poster = video.getAttribute("data-poster"); video.removeAttribute("data-poster"); }
       video.querySelectorAll("source[data-src]").forEach(function (s) { s.src = s.getAttribute("data-src"); s.removeAttribute("data-src"); });
       video.load();
       if (reduce) { video.removeAttribute("autoplay"); return; } // quem pediu menos movimento vê só a capa

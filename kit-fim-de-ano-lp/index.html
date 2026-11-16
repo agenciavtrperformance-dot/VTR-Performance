@@ -31,6 +31,7 @@
   <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="/assets/fonts/poppins-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preconnect" href="https://connect.facebook.net">
   <link rel="stylesheet" href="/assets/styles.css">
 </head>
@@ -323,7 +324,7 @@
         </div>
         <!-- Vídeo dos materiais: carrega só quando chega perto da tela (assets/main.js) -->
         <div class="kit-video">
-          <video class="js-lazy-video" autoplay muted loop playsinline preload="metadata" disablepictureinpicture width="720" height="1280" poster="/assets/video/o-que-vem-no-kit-poster.webp" aria-label="Vídeo mostrando os materiais do Kit Fim de Ano do Lojista">
+          <video class="js-lazy-video" autoplay muted loop playsinline preload="metadata" disablepictureinpicture width="720" height="1280" data-poster="/assets/video/o-que-vem-no-kit-poster.webp" aria-label="Vídeo mostrando os materiais do Kit Fim de Ano do Lojista">
             <source data-src="/assets/video/o-que-vem-no-kit.mp4" type="video/mp4">
           </video>
         </div>
